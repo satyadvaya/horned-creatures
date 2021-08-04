@@ -2,15 +2,23 @@ import React, { Component } from 'react';
 import ImageList from './ImageList.js';
 import images from './data.js';
 import './App.css';
+import Dropdown from './Dropdown.js';
 
 class App extends Component {
     state = {
       keyword: 'All',
+      // horns: 'All',
     };
+
+    options = ['All', 'narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon']
 
     handleKeyword = (event) => {
       this.setState({ keyword: event.target.value });
     };
+
+    // handleHorns = (event) => {
+    //   this.setState({ horns: event.target.value });
+    // }
 
     render() {
       const filteredCreatures = images.filter(
@@ -20,20 +28,17 @@ class App extends Component {
         return (
             <div className="App">
                 <h1>Horned Creatures</h1>
-                <select onChange={this.handleKeyword}>
-                    <option value="All">All Taxonomies</option>
-                    <option value="narwhal">Narwhal</option>
-                    <option value="rhino">Rhino</option>
-                    <option value="unicorn">Unicorn</option>
-                    <option value="unilego">Unilego</option>
-                    <option value="triceratops">Triceratops</option>
-                    <option value="markhor">Markhor</option>
-                    <option value="mouflon">Mouflon</option>
-                    <option value="addax">Addax</option>
-                    <option value="chameleon">Chameleon</option>
-                    <option value="lizard">Lizard</option>
-                    <option value="dragon">Dragon</option>
-                </select>
+                <Dropdown
+                  options={this.options}
+                  handleKeyword={this.handleKeyword}
+                />
+                {/* <select onChange={this.handleHorns}>
+                    <option value="All">All Horns</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="100">100</option>
+                </select>                 */}
                 <ImageList horned={filteredCreatures} />
             </div>
         );
