@@ -6,6 +6,8 @@ class ImageItem extends Component {
         return (
             <p>
                 {this.props.image.title}
+                <img src={this.props.image.url} width="100" alt={this.props.image.name}
+                />
             </p>
         );
     }

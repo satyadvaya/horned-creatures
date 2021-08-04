@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import ImageItem from './ImageItem.js';
 
 class ImageList extends Component {
@@ -7,7 +6,7 @@ class ImageList extends Component {
     render() { 
         return (
             <>
-                <h1>Image List</h1>
+                <h1>Horned Creatures</h1>
                 {this.props.images.map((item) => (
                     <ImageItem key={item.id} image={item} />
                 ))}
