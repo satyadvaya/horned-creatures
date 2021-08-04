@@ -5,11 +5,11 @@ class ImageList extends Component {
     // state = {  }
     render() { 
         return (
-            <>
+            <ul>
                 {this.props.horned.map((item) => (
                     <ImageItem key={item.id} image={item} />
                 ))}
-            </>
+            </ul>
         );
     }
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ImageList from './ImageList.js';
 import images from './data.js';
+import './App.css';
 
 class App extends Component {
     state = {
-      type: 'All',
+      keyword: 'All',
     };
 
     handleKeyword = (event) => {
@@ -20,7 +21,7 @@ class App extends Component {
             <div className="App">
                 <h1>Horned Creatures</h1>
                 <select onChange={this.handleKeyword}>
-                    <option value="All">All</option>
+                    <option value="All">All Taxonomies</option>
                     <option value="narwhal">Narwhal</option>
                     <option value="rhino">Rhino</option>
                     <option value="unicorn">Unicorn</option>
