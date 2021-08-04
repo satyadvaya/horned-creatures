@@ -6,8 +6,7 @@ class ImageList extends Component {
     render() { 
         return (
             <>
-                <h1>Horned Creatures</h1>
-                {this.props.images.map((item) => (
+                {this.props.horned.map((item) => (
                     <ImageItem key={item.id} image={item} />
                 ))}
             </>
