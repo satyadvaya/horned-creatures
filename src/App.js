@@ -7,22 +7,27 @@ import Dropdown from './Dropdown.js';
 class App extends Component {
     state = {
       keyword: 'All',
-      // horns: 'All',
+      horns: 'All',
     };
 
-    options = ['All', 'narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon']
+    options = ['All', 'narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon'];
+    hornsOptions = ['All', '1', '2', '3', '100'];
 
     handleKeyword = (event) => {
       this.setState({ keyword: event.target.value });
     };
 
-    // handleHorns = (event) => {
-    //   this.setState({ horns: event.target.value });
-    // }
+    handleHorns = (event) => {
+      const numberifiedHorns = Number(event.target.value);
+      this.setState({ horns: numberifiedHorns });
+    };
 
     render() {
       const filteredCreatures = images.filter(
         (item) => this.state.keyword === 'All' || item.keyword === this.state.keyword
+      );
+      const furtherFilteredCreatures = filteredCreatures.filter(
+        (item) => this.state.horns === 'All' || item.horns === this.state.horns
       );
 
         return (
@@ -30,8 +35,12 @@ class App extends Component {
                 <h1>Horned Creatures</h1>
                 <Dropdown
                   options={this.options}
-                  handleKeyword={this.handleKeyword}
+                  handleChange={this.handleKeyword}
                 />
+                <Dropdown
+                  options={this.hornsOptions}
+                  handleChange={this.handleHorns}
+                  />
                 {/* <select onChange={this.handleHorns}>
                     <option value="All">All Horns</option>
                     <option value="1">1</option>
@@ -39,7 +48,7 @@ class App extends Component {
                     <option value="3">3</option>
                     <option value="100">100</option>
                 </select>                 */}
-                <ImageList horned={filteredCreatures} />
+                <ImageList horned={furtherFilteredCreatures} />
             </div>
         );
     }
